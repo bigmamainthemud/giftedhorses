@@ -1,0 +1,19 @@
+mdb-carousel, 
+.carousel-inner {
+    max-height: 50vh;
+}
+mdb-carousel-item, 
+img[mdbCarouselImage] {
+    width: 100%;
+    max-height: 50vh;
+    height: 50vh; 
+    object-fit: cover;
+    object-position: top;
+}
+.carousel-caption h4,
+.carousel-caption p {
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.75);
+}
+.carousel-caption a {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

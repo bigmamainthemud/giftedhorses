@@ -1,0 +1,55 @@
+<div class="container mt-5 mb-4">
+    <ng-container *ngFor="let music of musicData">
+      <div *ngIf="music.active" class="mb-5">
+        <div class="card mplayer p-3">
+
+          <div class="card-body">
+            <div class="row d-flex justify-content-between align-items-center song-row">
+
+              <!-- LOCAL PLAYER -->
+              <!-- <div class="col-md-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col-6 col-md-3">
+                      <img [src]="music.directImageUrl" class="card-img-left img-fluid" alt="Album">
+                    </div>
+                    
+                    <div class="col-6 col-md-3">
+                      <h3 class="card-title text-white font-weight-bold">{{ music.title }}</h3>
+                      <h5 class="card-subtitle text-secondary">{{ music.album }}</h5>
+                      <p class="card-text text-secondary">{{ music.author }}</p>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                      <audio controls class="w-100 mt-3 mt-md-0">
+                          <source [src]="music.directAudioLink" type="audio/mpeg">
+                          Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <div *ngIf="music.safeSpotifyHtml" class="mb-3" [innerHTML]="music.safeSpotifyHtml">
+              </div>
+
+              <div *ngIf="music.safeAppleHtml" class="mb-3 d-flex justify-content-center align-items-center pt-3" [innerHTML]="music.safeAppleHtml">
+              </div>
+
+              <div class="music-icon-container">
+                <ng-container *ngFor="let social of socials; let i = index">
+                  <a *ngIf="social.serviceType?.toLowerCase() === 'music'" [href]="social.url" target="_blank" class="ms-2 me-2">
+                    <i class="fab fa-{{ social.name | lowercase }}"></i>
+                  </a>
+                </ng-container>
+              </div>
+              
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  

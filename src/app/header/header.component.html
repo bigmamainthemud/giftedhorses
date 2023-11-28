@@ -1,0 +1,36 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-light p-1">
+    <div class="container-fluid">
+        <a class="navbar-brand mt-0 mt-lg-0 p-0" href="/">
+          <img id="main-logo" *ngIf="logoUrl; else noLogo" [src]="logoUrl"/>
+          <ng-template #noLogo>
+            <div id="no-logo">GIFTED HORSES</div>
+          </ng-template>
+        </a>
+        
+        <!-- Toggle menu icon -->
+        <button
+            class="navbar-toggler ml-auto"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            (click)="isNavbarCollapsed = !isNavbarCollapsed"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+
+        <!-- Populate menu and pages -->
+        <div class="collapse navbar-collapse" [class.show]="!isNavbarCollapsed" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item" *ngFor="let page of pages">
+                <a class="nav-link" [routerLink]="page.page.toLowerCase()" (click)="isNavbarCollapsed = true">{{ page.page.toLowerCase() }}</a>
+              </li>
+            </ul>
+        </div>
+
+    </div>  
+</nav>
+  

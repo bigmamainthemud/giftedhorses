@@ -1,0 +1,21 @@
+<div class="container my-5 pb-5">
+    <div class="row">
+        <div *ngFor="let card of cardItems" class="col-md align-items-stretch pb-lg-0 pb-3">
+            <div class="card h-100 custom-light2 border-dark b2w-gradient">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <img [src]="card.thumbnail" class="img-fluid" />
+                    <a [routerLink]="card.page.toLowerCase()">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ card.page }}</h5>
+                    <p class="card-text">{{ card.subhead }}</p>
+                    <div class="d-grid d-md-flex justify-content-md-start mt-auto">
+                        <button class="btn btn-dark card-btn" type="button" [routerLink]="card.page.toLowerCase()">go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

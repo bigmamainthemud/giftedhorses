@@ -1,0 +1,23 @@
+<div id='about'>
+
+    <div class="container my-5 pb-5">
+        <div class="row">
+            <div *ngFor="let card of aboutItems" class="col-md align-items-stretch pb-lg-0 pb-3">
+                <div class="card h-100 custom-light2 border-dark b2w-gradient">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img [src]="card.image" class="img-fluid" />
+                        <!-- <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a> -->
+                    </div>
+                    <div class="card-body d-flex flex-column bg-col">
+                        <h5 class="card-title">{{ card.name }}</h5>
+                        <p class="card-text">{{ card.instrument }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>

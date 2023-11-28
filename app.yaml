@@ -1,0 +1,16 @@
+runtime: nodejs18
+
+handlers:
+  - url: /(.*\..+)$
+    static_files: dist/gift-horse-site-2023/\1
+    upload: dist/gift-horse-site-2023/(.*\..+)$
+  
+  - url: /.*
+    static_files: dist/gift-horse-site-2023/index.html
+    upload: dist/gift-horse-site-2023/index.html
+    secure: always  
+    redirect_http_response_code: 301
+
+automatic_scaling:
+  min_idle_instances: automatic 
+  max_idle_instances: automatic 

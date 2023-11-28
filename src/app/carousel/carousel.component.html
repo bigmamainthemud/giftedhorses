@@ -1,0 +1,32 @@
+<mdb-carousel [controls]="false" [indicators]="true" [animation]="'fade'" [interval]="3000">
+    <mdb-carousel-item *ngFor="let item of carouselItems; let i = index" class="d-block w-100">
+        <div class="container-fluid p-0">
+            <img mdbCarouselImage 
+                 [srcset]="item.imageSrcSet"
+                 [sizes]="item.imageSizes"
+                 [src]="item.carouselImage"
+                 [alt]="item.imageAlt">
+            <div mdbCarouselCaption class="carousel-caption">
+                <h4 class="mb-0">{{ item.message1 }}</h4>
+                <p class="mb-0">{{ item.message2 }}</p>
+                
+                <!-- For local navigation -->
+                <a *ngIf="isInternalLink(item.exitLink)" mdbBtn class="btn btn-primary btn-sm mt-3 mb-3"  
+                   [routerLink]="item.exitLink"
+                   mdbWavesEffect>
+                    {{ item.cta }}
+                </a>
+
+                <!-- For external navigation -->
+                <a *ngIf="!isInternalLink(item.exitLink)" mdbBtn class="btn btn-primary btn-sm mt-3 mb-3"  
+                   [attr.href]="item.exitLink"
+                   [class.disabled]="!item.exitLink"
+                   target="_blank"
+                   mdbWavesEffect
+                   rel="noopener noreferrer">
+                    {{ item.cta }}
+                </a>
+            </div>
+        </div>
+    </mdb-carousel-item>
+</mdb-carousel>

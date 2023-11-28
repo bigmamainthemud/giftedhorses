@@ -1,0 +1,27 @@
+audio {
+    filter: invert(1);
+} 
+
+.mplayer {
+    background-color: rgba(5, 18, 9, 0.5);
+    border-radius: 10px;
+    border: 1px solid #8b865c;
+    box-sizing: border-box;
+}
+
+.music-icon-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    i {
+        font-size: 32px;
+    }
+}
+
+.song-row {
+    
+    @media (min-width: 768px) {
+        max-width: 50vw;
+    }
+}

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gift-horse-site-2023": {
+    "giftedhorses-site-2023": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gift-horse-site-2023",
+            "outputPath": "dist/giftedhorses-site-2023/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/mdb-angular-ui-kit/assets/scss/mdb.scss",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -51,7 +54,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -60,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gift-horse-site-2023:build:production"
+              "browserTarget": "giftedhorses-site-2023:build:production"
             },
             "development": {
-              "browserTarget": "gift-horse-site-2023:build:development"
+              "browserTarget": "giftedhorses-site-2023:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gift-horse-site-2023:build"
+            "browserTarget": "giftedhorses-site-2023:build"
           }
         },
         "test": {
@@ -87,10 +96,70 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/giftedhorses-site-2023/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "giftedhorses-site-2023:build:development",
+              "serverTarget": "giftedhorses-site-2023:server:development"
+            },
+            "production": {
+              "browserTarget": "giftedhorses-site-2023:build:production",
+              "serverTarget": "giftedhorses-site-2023:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "giftedhorses-site-2023:build:production",
+              "serverTarget": "giftedhorses-site-2023:server:production"
+            },
+            "development": {
+              "browserTarget": "giftedhorses-site-2023:build:development",
+              "serverTarget": "giftedhorses-site-2023:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
